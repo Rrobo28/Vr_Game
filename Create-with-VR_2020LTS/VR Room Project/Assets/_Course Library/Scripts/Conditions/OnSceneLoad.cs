@@ -12,12 +12,12 @@ public class OnSceneLoad : MonoBehaviour
 
     private void Awake()
     {
-        SceneManager.sceneLoaded += PlayEvent;
+       // SceneManager.sceneLoaded += PlayEvent;
     }
 
     private void OnDestroy()
     {
-        SceneManager.sceneLoaded -= PlayEvent;
+        //SceneManager.sceneLoaded -= PlayEvent;
     }
 
     private void PlayEvent(Scene scene, LoadSceneMode mode)

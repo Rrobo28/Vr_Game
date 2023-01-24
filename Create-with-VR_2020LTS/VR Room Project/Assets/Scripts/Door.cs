@@ -71,7 +71,7 @@ public class Door : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
       
-        if (other.gameObject.tag == "Bot")
+        if (other.gameObject.CompareTag("Bot") || other.gameObject.CompareTag("MainCamera"))
         {
            
             hasCollided = true;
@@ -81,7 +81,7 @@ public class Door : MonoBehaviour
     {
         if (stayOpen)
             return;
-        if (other.gameObject.tag == "Bot")
+        if (other.gameObject.CompareTag("Bot") || other.gameObject.CompareTag("MainCamera"))
         {
 
             leftCollision = true;
