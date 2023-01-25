@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.XR.Interaction.Toolkit;
 public class Gun : MonoBehaviour
 {
     private GunAnimations animations;
@@ -12,6 +12,8 @@ public class Gun : MonoBehaviour
     public Transform bulletSpawn;
 
     bool hasShot = false;
+
+    public bool isSimulatorGun = false;
 
     private void Awake()
     {
@@ -54,5 +56,11 @@ public class Gun : MonoBehaviour
                 hit.collider.gameObject.GetComponent<BotBehaviour>().hasBeenShot = true;
             }
         }
+    }
+
+    public void GunPickedUp(SelectEnterEventArgs args)
+    {
+        if(isSimulatorGun)
+        GameObject.Find("GameMode").GetComponent<WaveManager>().PlayerReady();
     }
 }

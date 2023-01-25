@@ -4,61 +4,59 @@ using UnityEngine;
 
 public class BotAnimations : MonoBehaviour
 {
-    public enum BotStates { Idle,Walking,Pointing,Waving,Talking1,Talking2,Hit,Shot,Computer};
+    public enum BotStates { Idle,Walking,Pointing,Waving,Talking1,Talking2,Talking3,Hit,Shot,Computer};
 
     Animator thisAnim;
 
-    public GameObject playerHead;
+   
 
     public GameObject botHead;
     public GameObject lookAt;
     bool isLookingAtPlayer;
     bool isLookingAway;
+
+    private float t = 0;
     private void Awake()
     {
         thisAnim = GetComponent<Animator>();
-        playerHead = GameObject.FindGameObjectWithTag("MainCamera");
+       
     }
     private void OnAnimatorIK(int layerIndex)
     {
+        t += Time.deltaTime;
         if (!isLookingAtPlayer)
         {
-           
-            thisAnim.SetLookAtPosition(Vector3.zero);
-            
-            return;
+            thisAnim.SetLookAtWeight(Mathf.Lerp(1f,0f,t));
+          
+        }
+        else
+        {
+            thisAnim.SetLookAtWeight(Mathf.Lerp(0f, 1f, t));
 
         }
-        
-        thisAnim.SetLookAtWeight(1);
-        thisAnim.SetLookAtPosition(playerHead.transform.position);
+        thisAnim.SetLookAtPosition(Camera.main.transform.position);
     }
 
     private void Update()
     {
-        if (LineOfSight() && isInFront()&& !isLookingAtPlayer && isLookingAway)
+        if (LineOfSight() && isInFront()&& !isLookingAtPlayer)
         {
-          
+            t = 0;
             isLookingAtPlayer = true;
-            isLookingAway = false;
         }
-        else if (!isLookingAway && isLookingAtPlayer)
+        else if((!LineOfSight() || !isInFront()) && isLookingAtPlayer)
         {
-          
+            t = 0;
             isLookingAtPlayer = false;
-            isLookingAway = true;
-           
         }
+      
     }
 
     bool LineOfSight()
     {
-        if(playerHead == null)
-        {
-            return false;
-        }
-        float dist = Vector3.Distance(botHead.transform.position, playerHead.transform.position);
-        Ray ray = new Ray(botHead.transform.position, (playerHead.transform.position - botHead.transform.position) * dist);
+       
+        float dist = Vector3.Distance(botHead.transform.position, Camera.main.transform.position);
+        Ray ray = new Ray(botHead.transform.position, (Camera.main.transform.position - botHead.transform.position) * dist);
         RaycastHit hit;
 
       
@@ -79,7 +77,7 @@ public class BotAnimations : MonoBehaviour
 
     bool isInFront()
     {
-        Vector3 directionToTarget = playerHead.transform.position - botHead.transform.position;
+        Vector3 directionToTarget = Camera.main.transform.position - botHead.transform.position;
         float angle = Vector3.Angle(botHead.transform.forward, directionToTarget);
         
         if (Mathf.Abs(angle) < 45)

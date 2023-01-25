@@ -37,23 +37,23 @@ Material:
     - _EmmisionBlend1: 0.84
     - _EmmisionInnerBlend: 0.851
     - _EmmisionInnerBlend1: 1.09
-    - _EmmisionInnerWidth: 1
+    - _EmmisionInnerWidth: 0.249
     - _EmmisionInnerWidth1: 0.87
     - _EmmisionWidth: 0
     - _EmmisionWidth1: 0.41
-    - _FaderInOut: 1
+    - _FaderInOut: 0.52
     - _Float3: 0
     - _Float4: 0
     - _Float5: 0
     - _Float6: 0
     - _GI_Reflection: 0
     - _GI_Reflection1: 0.6
-    - _Occulsion: 0.435
+    - _Occulsion: 0.524
     - _Occulsion1: 0.6
     - _Opacity: 1
     - _Rings1: 0
     - _RotationAngle: 0.2
-    - _Scale: 34.1
+    - _Scale: 16.1
     - _Scale1: 57.94
     - _Smoothness: 1
     - _Smoothness1: 0.65
@@ -78,5 +78,5 @@ Material:
     - _InnerEmission: {r: 0.013602734, g: 0, b: 1, a: 0}
     - _OuterEmmisive: {r: 0, g: 0.8547809, b: 1, a: 0}
     - _Pivot: {r: 0, g: 0, b: 0, a: 0}
-    - _TeleportColor: {r: 0, g: 0, b: 28.51895, a: 1}
+    - _TeleportColor: {r: 0, g: 0, b: 2.270603, a: 1}
   m_BuildTextureStacks: []

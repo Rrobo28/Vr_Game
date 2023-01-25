@@ -41,7 +41,7 @@ Material:
     - _EmmisionInnerWidth1: 0.87
     - _EmmisionWidth: 0.314
     - _EmmisionWidth1: 0.41
-    - _FaderInOut: 0.923
+    - _FaderInOut: 1
     - _Float3: 0
     - _Float4: 0
     - _Float5: 0

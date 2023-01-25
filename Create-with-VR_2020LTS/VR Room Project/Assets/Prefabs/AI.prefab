@@ -2301,7 +2301,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3144771462523955729}
-  m_LocalRotation: {x: -0, y: -0.9975797, z: -0, w: 0.06953359}
+  m_LocalRotation: {x: 0, y: -0.9975799, z: 0, w: 0.06953016}
   m_LocalPosition: {x: 23.813, y: 0.239, z: 22.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2398,9 +2398,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 40
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -2487,7 +2487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hologramMat: {fileID: 2100000, guid: 4b57a1e53db18a349bd9e3be46786d93, type: 2}
   materials: []
-  gunMesh:
+  weaponMesh:
   - {fileID: 6378669296397910745}
   - {fileID: 6378669296397910747}
   - {fileID: 6378669296397910749}
@@ -2530,7 +2530,7 @@ MonoBehaviour:
   bulletSpawn: {fileID: 6378669294528881473}
   Bullet: {fileID: 5519727751062873916, guid: 01a564aba1ac3e64f84a5fb49e6fb9a6, type: 3}
   fireRate: 2
-  startDelay: 0.5
+  shootClip: {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
   bulletSpeed: 200
   bulletsShot: []
 --- !u!1 &3180738212005965689
@@ -3995,7 +3995,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6378669294528881474}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.1529, y: -0.0155, z: 0}
+  m_LocalPosition: {x: -0.0882, y: 0.0504, z: -0.0001}
   m_LocalScale: {x: 0.33333325, y: 0.3333332, z: 0.3333332}
   m_ConstrainProportionsScale: 0
   m_Children: []

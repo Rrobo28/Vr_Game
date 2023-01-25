@@ -8,7 +8,7 @@ public class AI : MonoBehaviour
 
     public Material[] materials;
 
-    public MeshRenderer[] gunMesh;
+    public MeshRenderer[] weaponMesh;
 
     private Animator thisAnim;
 
@@ -29,7 +29,7 @@ public class AI : MonoBehaviour
             totalMeshes++;
 
         }
-        foreach (MeshRenderer mesh in gunMesh)
+        foreach (MeshRenderer mesh in weaponMesh)
         {
             mesh.material = new Material(hologramMat);
             mesh.material.SetFloat("_FaderInOut", 0f);
@@ -41,7 +41,10 @@ public class AI : MonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(Camera.main.transform.position);
+        Vector3 dir = Camera.main.transform.position - this.transform.position;
+        dir.y = 0;
+        transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
+        
         if (totalMeshes > completeMeshes && !isReady)
         {
             FadeIn();
@@ -49,7 +52,10 @@ public class AI : MonoBehaviour
         else if (!isReady)
         {
             isReady = true;
-            GetComponent<AIShoot>().StartTimer();
+            if (GetComponent<AIShoot>())
+            {
+                GetComponent<AIShoot>().StartTimer();
+            }
         }
         if(isReady && isShot)
         {
@@ -61,6 +67,7 @@ public class AI : MonoBehaviour
     private void OnAnimatorIK(int layerIndex)
     {
         thisAnim.SetLookAtWeight(1);
+        
         thisAnim.SetLookAtPosition(Camera.main.transform.position);
     }
 
@@ -69,9 +76,12 @@ public class AI : MonoBehaviour
         if (!isReady)
             return;
 
-        foreach(GameObject bullet in GetComponent<AIShoot>().bulletsShot)
+        if (GetComponent<AIShoot>())
         {
-            Destroy(bullet);
+            foreach (GameObject bullet in GetComponent<AIShoot>().bulletsShot)
+            {
+                Destroy(bullet);
+            }
         }
 
         completeMeshes = 0;
@@ -96,7 +106,7 @@ public class AI : MonoBehaviour
                 completeMeshes++;
             }
         }
-        foreach (MeshRenderer mesh in gunMesh)
+        foreach (MeshRenderer mesh in weaponMesh)
         {
             if (mesh.material.GetFloat("_FaderInOut") < 1)
             {
@@ -128,7 +138,7 @@ public class AI : MonoBehaviour
                     completeMeshes++;
                 }
             }
-            foreach (MeshRenderer mesh in gunMesh)
+            foreach (MeshRenderer mesh in weaponMesh)
             {
                 if (mesh.material.GetFloat("_FaderInOut") > 0)
                 {

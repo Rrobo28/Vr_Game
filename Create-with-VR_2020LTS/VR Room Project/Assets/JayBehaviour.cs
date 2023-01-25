@@ -26,27 +26,28 @@ public class JayBehaviour : BotBehaviour
         eyeControl.SetEmotion(Emotion.Type.Netrual);
 
 
-
+        /*
         for (int i = soundIndex; soundIndex < audio.currentScene.Length; soundIndex++)
         {
 
             Audio currentAudioPlaying = audio.GetAudio(soundIndex);
             Debug.Log(currentAudioPlaying.clip.name);
-            animations.SetState(currentAudioPlaying.state);
+           
 
-            yield return new WaitForSeconds(currentAudioPlaying.animationDelay);
+           
 
             audio.Play(soundIndex);
+            yield return new WaitForSeconds(currentAudioPlaying.animationDelay);
 
-
+            animations.SetState(currentAudioPlaying.state);
             yield return new WaitForSeconds(currentAudioPlaying.clip.length);
 
 
-        }
+        }*/
 
 
 
-        //movement.WalkTo(BotMovement.WalkPoints.MainHall);
+        movement.WalkTo(BotMovement.WalkPoints.MainHall);
 
 
     }

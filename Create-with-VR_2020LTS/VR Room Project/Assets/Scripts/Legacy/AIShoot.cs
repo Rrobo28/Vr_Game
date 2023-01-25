@@ -10,7 +10,7 @@ public class AIShoot : MonoBehaviour
 
     public float fireRate = 1f;
 
-    public float startDelay = 2f;
+    public AudioClip shootClip;
 
     public float bulletSpeed = 10f;
 
@@ -41,6 +41,8 @@ public class AIShoot : MonoBehaviour
 
     void Shoot()
     {
+
+        GetComponent<AudioSource>().Play();
         GameObject newBullet = Instantiate(Bullet, bulletSpawn.transform.position, Quaternion.identity);
         newBullet.GetComponentInChildren<Bullet>().speed = bulletSpeed;
         newBullet.GetComponentInChildren<Bullet>().bulletSpawn = bulletSpawn;
@@ -50,8 +52,9 @@ public class AIShoot : MonoBehaviour
 
     public void StartTimer()
     {
+        GetComponent<AudioSource>().clip = shootClip;
         currentTime = Time.time;  
         TimerStart = true;
-        Shoot();
+        
     }
 }

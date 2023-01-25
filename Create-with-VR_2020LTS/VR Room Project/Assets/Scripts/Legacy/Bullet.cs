@@ -24,7 +24,6 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("MainCamera"))
         {
-            GameObject.Find("GameMode").GetComponent<WaveManager>().Reset();
             Destroy(this.gameObject);
         }
     }

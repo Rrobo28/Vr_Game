@@ -8,14 +8,14 @@ public class GadgetBehaviour : BotBehaviour
     private void Start()
     {
         dialogue = Dialogue();
-      
+        StartCoroutine(Dialogue());
 
     }
     public override void PlayerHere()
     {
         base.PlayerHere();
         Debug.Log("GADGET SAYS HELLO");
-        StartCoroutine(Dialogue());
+       
 
     }
     IEnumerator Dialogue()
