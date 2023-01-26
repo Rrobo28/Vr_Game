@@ -3151,7 +3151,7 @@ MonoBehaviour:
   m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
     m_PersistentCalls:
@@ -3207,6 +3207,18 @@ MonoBehaviour:
       - m_Target: {fileID: 8318489849670602903}
         m_TargetAssemblyTypeName: ObjectControls, Assembly-CSharp
         m_MethodName: SelectEnter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8318489849670602902}
+        m_TargetAssemblyTypeName: Gun, Assembly-CSharp
+        m_MethodName: GunPickedUp
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3378,6 +3390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpawn: {fileID: 5533141249226333258}
+  isSimulatorGun: 0
 --- !u!114 &8318489849670602903
 MonoBehaviour:
   m_ObjectHideFlags: 0

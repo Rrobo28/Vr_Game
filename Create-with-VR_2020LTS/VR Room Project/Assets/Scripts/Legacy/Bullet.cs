@@ -13,8 +13,8 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         GetComponentInChildren<MeshRenderer>().material = new Material(bulletMat);
-        Vector3 direction = Camera.main.transform.position-bulletSpawn.transform.position;
-        transform.forward =direction.normalized;
+        Vector3 direction = Camera.main.transform.position - bulletSpawn.transform.position;
+        transform.forward = direction.normalized;
 
         GetComponent<Rigidbody>().AddForce(direction.normalized * speed);
 
@@ -24,6 +24,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("MainCamera"))
         {
+            GameObject.Find("GameMode").GetComponent<WaveManager>().ResetWave();
             Destroy(this.gameObject);
         }
     }

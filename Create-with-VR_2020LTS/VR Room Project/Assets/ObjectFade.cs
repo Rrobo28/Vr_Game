@@ -13,25 +13,8 @@ public class ObjectFade : MonoBehaviour
     private void Start()
     {
         prevMaterials = GetComponent<MeshRenderer>().materials;
-        foreach (MeshRenderer mesh in GetComponentsInChildren<MeshRenderer>())
-        {
-            Material[] materials = mesh.materials;
 
-            for (int i = 0; i < materials.Length; i++)
-            {
-                materials[i] = new Material(holoMaterial);
-                if (StartShown)
-                {
-                    materials[i].SetFloat("_FaderInOut", 1);
-                }
-                else
-                {
-                    materials[i].SetFloat("_FaderInOut", 0);
-                }
-            }
-            mesh.materials = materials;
-        }
-        StartFade();
+        StartCoroutine(SetSimMaterial(StartShown));
     }
 
    public void StartFade()
@@ -62,6 +45,12 @@ public class ObjectFade : MonoBehaviour
 
     }
 
+    public void StartFadeOut()
+    {
+        StartCoroutine(SetSimMaterial(true));
+        StartCoroutine(FadeOut());
+    }
+
     public IEnumerator FadeOut()
     {
         foreach (MeshRenderer mesh in GetComponentsInChildren<MeshRenderer>())
@@ -82,8 +71,6 @@ public class ObjectFade : MonoBehaviour
             mesh.materials = materials;
             GetComponent<MeshCollider>().enabled = false;
         }
-       
-
     }
 
     IEnumerator SetMaterials()
@@ -100,6 +87,29 @@ public class ObjectFade : MonoBehaviour
         }
         yield return null;
     }
+    IEnumerator SetSimMaterial(bool shown)
+    {
+        foreach (MeshRenderer mesh in GetComponentsInChildren<MeshRenderer>())
+        {
+            Material[] materials = mesh.materials;
 
+            for (int i = 0; i < materials.Length; i++)
+            {
+                materials[i] = new Material(holoMaterial);
+                if (shown)
+                {
+                    materials[i].SetFloat("_FaderInOut", 1);
+                }
+                else
+                {
+                    materials[i].SetFloat("_FaderInOut", 0);
+                }
+            }
+            mesh.materials = materials;
+        }
+        yield return null;
+       
+    }
+   
 
 }

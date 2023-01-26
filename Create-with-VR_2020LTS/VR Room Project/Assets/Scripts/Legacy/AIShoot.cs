@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIShoot : MonoBehaviour
+public class AIShoot : AIAction
 {
     public Transform bulletSpawn;
 
@@ -41,7 +41,6 @@ public class AIShoot : MonoBehaviour
 
     void Shoot()
     {
-
         GetComponent<AudioSource>().Play();
         GameObject newBullet = Instantiate(Bullet, bulletSpawn.transform.position, Quaternion.identity);
         newBullet.GetComponentInChildren<Bullet>().speed = bulletSpeed;
@@ -53,6 +52,7 @@ public class AIShoot : MonoBehaviour
     public void StartTimer()
     {
         GetComponent<AudioSource>().clip = shootClip;
+        Shoot();
         currentTime = Time.time;  
         TimerStart = true;
         

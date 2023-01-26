@@ -8,7 +8,7 @@ public class GadgetBehaviour : BotBehaviour
     private void Start()
     {
         dialogue = Dialogue();
-        StartCoroutine(Dialogue());
+        animations.SetState(BotAnimations.BotStates.Computer);
 
     }
     public override void PlayerHere()

@@ -2288,7 +2288,7 @@ GameObject:
   - component: {fileID: 6378669296102461291}
   - component: {fileID: 6378669296102461290}
   m_Layer: 0
-  m_Name: AI
+  m_Name: AI Shoot
   m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2303,7 +2303,7 @@ Transform:
   m_GameObject: {fileID: 3144771462523955729}
   m_LocalRotation: {x: 0, y: -0.9975799, z: 0, w: 0.06953016}
   m_LocalPosition: {x: 23.813, y: 0.239, z: 22.91}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8050273551122777556}
@@ -2485,7 +2485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8157db37700e44daf7d5fb416f055d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hologramMat: {fileID: 2100000, guid: 4b57a1e53db18a349bd9e3be46786d93, type: 2}
+  hologramMat: {fileID: 2100000, guid: 2bda9686ba3c80f4891595ecd41a7b0f, type: 2}
   materials: []
   weaponMesh:
   - {fileID: 6378669296397910745}

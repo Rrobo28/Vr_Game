@@ -51,9 +51,14 @@ public class Gun : MonoBehaviour
 
         if (Physics.Raycast(transform.position, bulletSpawn.forward, out hit, Mathf.Infinity))
         {
-            if (hit.collider.CompareTag("Bot") && hit.collider.gameObject.GetComponent<BotBehaviour>().interuptFinished)
+            if (hit.collider.gameObject.CompareTag("Bot"))
             {
+                if(hit.collider.gameObject.GetComponent<BotBehaviour>().interuptFinished)
                 hit.collider.gameObject.GetComponent<BotBehaviour>().hasBeenShot = true;
+            }
+            else if (hit.collider.gameObject.CompareTag("AI"))
+            {
+                hit.collider.gameObject.GetComponentInParent<AI>().Shot();
             }
         }
     }

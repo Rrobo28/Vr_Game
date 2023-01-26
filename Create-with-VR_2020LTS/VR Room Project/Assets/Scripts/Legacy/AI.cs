@@ -17,9 +17,14 @@ public class AI : MonoBehaviour
 
     public bool isReady;
     public bool isShot;
+
+    WaveManager waveManager;
     private void Start()
     {
+        waveManager = GameObject.Find("GameMode").GetComponent<WaveManager>();
         thisAnim = GetComponent<Animator>();
+
+     
         GetComponent<AudioSource>().Play();
         foreach (SkinnedMeshRenderer mesh in GetComponentsInChildren<SkinnedMeshRenderer>())
         {
@@ -44,7 +49,7 @@ public class AI : MonoBehaviour
         Vector3 dir = Camera.main.transform.position - this.transform.position;
         dir.y = 0;
         transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
-        
+
         if (totalMeshes > completeMeshes && !isReady)
         {
             FadeIn();
@@ -57,17 +62,17 @@ public class AI : MonoBehaviour
                 GetComponent<AIShoot>().StartTimer();
             }
         }
-        if(isReady && isShot)
+        if (isReady && isShot)
         {
-            GameObject.Find("GameMode").GetComponent<WaveManager>().RemoveEnemy(this.gameObject);
             FadeOut();
+
         }
     }
 
     private void OnAnimatorIK(int layerIndex)
     {
         thisAnim.SetLookAtWeight(1);
-        
+
         thisAnim.SetLookAtPosition(Camera.main.transform.position);
     }
 
@@ -88,8 +93,11 @@ public class AI : MonoBehaviour
 
         isShot = true;
 
-       
-       
+
+        waveManager.SpawnUnit();
+
+
+
     }
 
     void FadeIn()
@@ -123,7 +131,6 @@ public class AI : MonoBehaviour
 
     public void FadeOut()
     {
-
         if (totalMeshes > completeMeshes)
         {
             foreach (SkinnedMeshRenderer mesh in GetComponentsInChildren<SkinnedMeshRenderer>())
@@ -156,9 +163,9 @@ public class AI : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-       
+
     }
 
-   
+
 
 }
