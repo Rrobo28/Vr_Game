@@ -5,9 +5,15 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class TeleportTrigger : MonoBehaviour
 {
     public BotBehaviour botBehaviour;
-   public void OnEnter(SelectExitEventArgs args)
+
+    public void OnTriggerEnter(Collider other)
     {
-        botBehaviour.PlayerHere();
+        if (other.gameObject.CompareTag("MainCamera"))
+        {
+            botBehaviour.PlayerHere();
+        }
     }
+
+ 
 }
   

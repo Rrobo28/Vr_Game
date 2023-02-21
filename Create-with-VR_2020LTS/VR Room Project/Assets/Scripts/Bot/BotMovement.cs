@@ -69,7 +69,7 @@ public class BotMovement : MonoBehaviour
                     {
                         thisAgent.isStopped = true;
                         hasStopped = true;
-                        GetComponent<BotAnimations>().SetState(BotAnimations.BotStates.Idle);
+                        //GetComponent<BotAnimations>().SetState(BotAnimations.BotStates.Idle);
                        
                     }
                 }

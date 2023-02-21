@@ -26,7 +26,7 @@ public class JayBehaviour : BotBehaviour
         eyeControl.SetEmotion(Emotion.Type.Netrual);
 
 
-        /*
+        
         for (int i = soundIndex; soundIndex < audio.currentScene.Length; soundIndex++)
         {
 
@@ -43,7 +43,7 @@ public class JayBehaviour : BotBehaviour
             yield return new WaitForSeconds(currentAudioPlaying.clip.length);
 
 
-        }*/
+        }
 
 
 

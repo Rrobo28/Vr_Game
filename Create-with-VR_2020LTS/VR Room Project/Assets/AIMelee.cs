@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+
+//Class for the melee enemy
 public class AIMelee : AIAction
-{ 
+{
     bool isMoving = false;
 
-    NavMeshAgent agent;
+    private NavMeshAgent agent;
 
     private void Awake()
     {
@@ -24,9 +26,8 @@ public class AIMelee : AIAction
         if (!isMoving)
         {
             MoveToPlayer();
-            
-        }
 
+        }
         DistCheck();
     }
 

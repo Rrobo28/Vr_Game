@@ -8,15 +8,20 @@ public class GadgetBehaviour : BotBehaviour
     private void Start()
     {
         dialogue = Dialogue();
-        animations.SetState(BotAnimations.BotStates.Computer);
+       
 
     }
     public override void PlayerHere()
     {
         base.PlayerHere();
         Debug.Log("GADGET SAYS HELLO");
-       
+        animations.SetState(BotAnimations.BotStates.Computer);
 
+    }
+
+    private void Update()
+    {
+       
     }
     IEnumerator Dialogue()
     {

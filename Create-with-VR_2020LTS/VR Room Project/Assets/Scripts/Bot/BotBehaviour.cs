@@ -104,7 +104,6 @@ public class BotBehaviour : MonoBehaviour
 
     IEnumerator Interuption()
     {
-       
         Audio[] prevAudio = audio.currentScene;
         audio.currentScene = audio.hitSounds;
       
